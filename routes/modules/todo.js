@@ -1,6 +1,7 @@
 const express = require('express')
 const db = require('../../models')
 const Todo = db.Todo
+const User = db.User
 const router = express.Router()
 
 router.get('/', (req, res) => {
