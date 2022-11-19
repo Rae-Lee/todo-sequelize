@@ -20,6 +20,11 @@ app.use(session({
 }))
 app.use(methodOverride('_method'))
 usePassport(app)
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  next()
+})
 app.use(flash(), (req, res, next) => {
   res.locals.warning_msg = req.flash('warning_msg')
   res.locals.success_msg = req.flash('success_msg')
